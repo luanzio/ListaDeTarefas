@@ -1,6 +1,6 @@
 import { ITask } from './types/tasks';
 
-const baseUrl = process.env.API_BASE_URL;
+const baseUrl = 'http://localhost:3001';
 
 export const getAllTodos = async (): Promise<ITask[]> => {
   const res = await fetch(`${baseUrl}/tasks`, { cache: 'no-store' });
@@ -35,8 +35,5 @@ export const editTodo = async (todo: ITask): Promise<ITask> => {
 export const deleteTodo = async (id: string): Promise<void> => {
   await fetch(`${baseUrl}/tasks/${id}`, {
     method: 'DELETE',
-    headers: {
-      'Content-Type': 'application/json',
-    },
   });
 };
